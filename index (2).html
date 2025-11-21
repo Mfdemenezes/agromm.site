@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroMM - Sistema #1 de Gestão Pecuária | Teste Grátis por 30 Dias</title>
+    <meta name="description" content="Mais de 500 fazendas já aumentaram a lucratividade em até 35% com AgroMM. Criado por zootecnista com 19 anos de experiência. Comece grátis hoje!">
+    <link rel="icon" type="image/png" href="Logo_AgroMM_-_Versa_o_Pecua_ria__1_.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%);
+            color: white;
+            text-align: center;
+            padding: 0.8rem 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .notification-bar .highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 800;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5016 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .phone-number {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-header {
+            background: white;
+            color: #1e3a5f;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            color: white;
+            padding: 140px 2rem 100px;
+            text-align: center;
+            overflow: hidden;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.88) 0%, rgba(45, 80, 22, 0.88) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge-top {
+            display: inline-block;
+            background: rgba(74, 124, 42, 0.9);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-highlight {
+            background: linear-gradient(120deg, #4a7c2a 0%, #5a9c3a 100%);
+            color: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(74, 124, 42, 0.4);
+        }
+
+        .hero-subheadline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+
+        .hero-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .hero-benefit::before {
+            content: '✓';
+            background: rgba(74, 124, 42, 0.9);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%);
+            color: white;
+            padding: 1.4rem 3.5rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 25px rgba(74, 124, 42, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(74, 124, 42, 0.6);
+            background: linear-gradient(135deg, #5a9c3a 0%, #6ab045 100%);
+        }
+
+        .hero-trust {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .hero-trust strong {
+            color: #ffd700;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            line-height: 1;
+        }
+
+        .trust-label {
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1e3a5f;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+            position: relative;
+            border-left: 4px solid #4a7c2a;
+        }
+
+        .testimonial-stars {
+            color: #ffd700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #4a7c2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            color: #1e3a5f;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Results Section */
+        .results-section {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .results-grid {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #4a7c2a;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .screenshot-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .screenshot-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .screenshot-item.mobile {
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 30px;
+            border: 8px solid #1e3a5f;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30, 58, 95, 0.95), transparent);
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .pain-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #fff8f0;
+            border-left: 5px solid #ff6b6b;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .pain-item:hover {
+            transform: translateX(10px);
+        }
+
+        .pain-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .pain-item h3 {
+            color: #d63031;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f0f8f0;
+            border-left: 5px solid #4caf50;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .solution-item:hover {
+            transform: translateX(10px);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .solution-item h3 {
+            color: #27ae60;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #4a7c2a;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3a5f;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5016 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .comparison-table .agromm-col {
+            background: #f0f8f0;
+            font-weight: 600;
+        }
+
+        .check-yes {
+            color: #4a7c2a;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .check-no {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .pricing-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 35px rgba(0,0,0,0.12);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+            border: 3px solid #e9ecef;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-12px);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5016 100%);
+            color: white;
+            border: none;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%);
+            color: white;
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(74, 124, 42, 0.4);
+            text-transform: uppercase;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 2rem 0;
+            line-height: 1;
+        }
+
+        .pricing-price small {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #4a7c2a;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: #5a9c3a;
+        }
+
+        .btn-pricing {
+            background: #1e3a5f;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-pricing:hover {
+            background: #152e4a;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured .btn-pricing {
+            background: linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%);
+            color: white;
+            box-shadow: 0 6px 20px rgba(74, 124, 42, 0.4);
+        }
+
+        .pricing-guarantee {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .pricing-guarantee h3 {
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .pricing-guarantee p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #4a7c2a;
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #1e3a5f;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: #555;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            padding: 100px 2rem;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5016 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .cta-final-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-final h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+
+        .cta-final p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.9);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-subheadline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .pricing-grid,
+            .screenshot-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .phone-number {
+                display: none;
+            }
+
+            .nav-cta-group {
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar">
+        🎉 <span class="highlight">OFERTA ESPECIAL:</span> Primeiros 100 cadastros ganham 3 MESES GRÁTIS no plano Profissional! ⏰
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="Logo_AgroMM_-_Versa_o_Pecua_ria__1_.png" alt="AgroMM Logo">
+                <span class="logo-text">AgroMM</span>
+            </div>
+            <div class="nav-cta-group">
+                <a href="https://agromm.mbam.com.br/register" class="cta-header">COMEÇAR AGORA</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="Cabec_alho_Fazenda_1920x400_Final__2_.jpg" alt="Fazenda" class="hero-background">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge-top">✨ DESCOMPLICADO E FÁCIL DE UTILIZAR</div>
+            <h1>
+                Aumente a Lucratividade da Sua Fazenda em até <span class="hero-highlight">35%</span>
+            </h1>
+            <p class="hero-subheadline">
+                Sistema completo de gestão pecuária usado por mais de 560 fazendas em todo o Brasil. 
+                Controle profissional para seu rebanho crescer de forma sustentável.
+            </p>
+            
+            <div class="hero-benefits">
+                <div class="hero-benefit">Configure em 5 minutos</div>
+                <div class="hero-benefit">Sem cartão de crédito</div>
+                <div class="hero-benefit">Suporte brasileiro</div>
+            </div>
+
+            <a href="https://agromm.mbam.com.br/register" class="cta-primary">
+                EXPERIMENTAR GRÁTIS POR 30 DIAS
+            </a>
+            
+            <p class="hero-trust">
+                ✨ <strong>GRÁTIS</strong> até 50 cabeças • Cancele quando quiser • Garantia de 30 dias
+            </p>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <div class="trust-number" data-target="560">0</div>
+                <div class="trust-label">Fazendas Ativas</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number" data-target="82300">0</div>
+                <div class="trust-label">Cabeças Gerenciadas</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">98%</div>
+                <div class="trust-label">Taxa de Satisfação</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">24/7</div>
+                <div class="trust-label">Suporte Disponível</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section class="social-proof">
+        <h2 class="section-title">O Que Pecuaristas Estão Dizendo</h2>
+        <p class="section-subtitle">Histórias reais de quem já transformou a gestão da fazenda com AgroMM</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Consegui reduzir custos em 28% e aumentar o GMD do rebanho em apenas 6 meses. 
+                    O sistema é simples e mostra exatamente onde estava perdendo dinheiro. Recomendo!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JR</div>
+                    <div class="testimonial-info">
+                        <h4>João Roberto Silva</h4>
+                        <p>Fazenda São José - 380 cabeças</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Parei de perder tempo com planilhas e cadernetas. Agora tenho todos os dados 
+                    do rebanho no celular, mesmo sem internet. A taxa de prenhez aumentou 15%!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MC</div>
+                    <div class="testimonial-info">
+                        <h4>Maria Clara Andrade</h4>
+                        <p>Fazenda Boa Vista - 520 cabeças</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Por ser feito por zootecnista, o sistema tem tudo que realmente preciso. 
+                    Controle sanitário impecável e relatórios que fazem sentido. Valeu cada centavo!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">PA</div>
+                    <div class="testimonial-info">
+                        <h4>Pedro Augusto Ferreira</h4>
+                        <p>Fazenda Santa Rita - 750 cabeças</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <h2 class="section-title">Resultados Comprovados</h2>
+        <p class="section-subtitle">Dados médios de fazendas que usam AgroMM há mais de 6 meses</p>
+        
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-icon">💰</div>
+                <div class="result-number">35%</div>
+                <div class="result-label">Aumento na Lucratividade</div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-icon">📊</div>
+                <div class="result-number">28%</div>
+                <div class="result-label">Redução de Custos</div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-icon">⏱️</div>
+                <div class="result-number">15h</div>
+                <div class="result-label">Economia de Tempo/Mês</div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-icon">🐄</div>
+                <div class="result-number">18%</div>
+                <div class="result-label">Melhoria no GMD</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <h2 class="section-title">Interface Moderna e Intuitiva</h2>
+        <p class="section-subtitle">Veja como é simples controlar toda a fazenda em uma única plataforma</p>
+        
+        <div class="screenshot-grid">
+            <div class="screenshot-item">
+                <img src="Captura_de_Tela_2025-11-18_a_s_07_40_08.png" alt="Dashboard AgroMM Desktop">
+                <div class="screenshot-caption">📊 Dashboard completo com KPIs em tempo real</div>
+            </div>
+
+            <div class="screenshot-item mobile">
+                <img src="AgroMM_Imagem_3_Frontend_Real__1_.png" alt="AgroMM Mobile">
+                <div class="screenshot-caption">📱 App mobile para usar no campo</div>
+            </div>
+
+            <div class="screenshot-item mobile">
+                <img src="AgroMM_Pecua_ria_Imagem_3.png" alt="Dashboard Mobile">
+                <div class="screenshot-caption">💹 Controle financeiro detalhado</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="pain-points">
+        <div class="pain-container">
+            <h2 class="section-title">Pare de Perder Dinheiro com Gestão Ultrapassada</h2>
+            <p class="section-subtitle">Estes problemas custam milhares de reais por ano para sua fazenda</p>
+            
+            <div class="pain-item">
+                <div class="pain-icon">💸</div>
+                <div>
+                    <h3>Custos invisíveis drenando o lucro</h3>
+                    <p>Sem controle preciso de despesas, você está pagando caro demais por insumos, perdendo dinheiro com animais improdutivos e não sabe onde cortar custos.</p>
+                </div>
+            </div>
+
+            <div class="pain-item">
+                <div class="pain-icon">📝</div>
+                <div>
+                    <h3>Horas perdidas com papelada e planilhas</h3>
+                    <p>Tempo que poderia ser usado para gestão estratégica é desperdiçado procurando informações, atualizando planilhas e decifrandoanotações antigas.</p>
+                </div>
+            </div>
+
+            <div class="pain-item">
+                <div class="pain-icon">🎯</div>
+                <div>
+                    <h3>Decisões no escuro</h3>
+                    <p>Sem dados confiáveis, você administra baseado em "achismos", perdendo oportunidades de melhorar resultados e maximizar lucros.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 4rem;">A Solução: Gestão Profissional e Dados Confiáveis</h2>
+            
+            <div class="solution-item">
+                <div class="solution-icon">✅</div>
+                <div>
+                    <h3>Controle total de custos e receitas</h3>
+                    <p>Saiba exatamente quanto cada animal custa, identifique os mais lucrativos e tome decisões baseadas em números reais. Aumente sua margem de lucro.</p>
+                </div>
+            </div>
+
+            <div class="solution-item">
+                <div class="solution-icon">✅</div>
+                <div>
+                    <h3>Tudo automatizado e em um só lugar</h3>
+                    <p>Cadastro completo do rebanho, pesagens, vacinas, reprodução. Acesse qualquer informação em segundos, de qualquer lugar.</p>
+                </div>
+            </div>
+
+            <div class="solution-item">
+                <div class="solution-icon">✅</div>
+                <div>
+                    <h3>Relatórios detalhados e inteligentes</h3>
+                    <p>Dashboards e relatórios mostram exatamente onde melhorar: desempenho por lote, eficiência reprodutiva, análise de custos e indicadores essenciais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Easy to Use Highlight -->
+    <section style="padding: 60px 2rem; background: linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%); text-align: center;">
+        <div style="max-width: 900px; margin: 0 auto; color: white;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">✨ Descomplicado e Fácil de Utilizar</h2>
+            <p style="font-size: 1.3rem; opacity: 0.95; line-height: 1.7;">
+                Se você usa WhatsApp, vai usar o AgroMM. Interface intuitiva desenvolvida para pecuaristas, 
+                sem complicação. Configure sua fazenda em menos de 5 minutos e comece a usar imediatamente.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <h2 class="section-title">Sistema Completo para Gestão Profissional</h2>
+        <p class="section-subtitle">Todas as ferramentas que você precisa em uma única plataforma</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><img src="I_cone_-_Lote_Total.png" alt="Gestão do Rebanho"></div>
+                <h3>Gestão do Rebanho</h3>
+                <p>Cadastro completo com genealogia, identificação, fotos e histórico detalhado de cada animal. Controle por lote, categoria e localização.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3>Controle de Peso e GMD</h3>
+                <p>Registro de pesagens com cálculo automático de Ganho Médio Diário. Identifique animais com baixo desempenho rapidamente.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💉</div>
+                <h3>Gestão Sanitária</h3>
+                <p>Controle completo de vacinas, vermífugos e tratamentos. Alertas automáticos para não perder nenhum protocolo.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><img src="I_cone_-_Vaca.png" alt="Reprodução"></div>
+                <h3>Controle Reprodutivo Completo</h3>
+                <p>Gestão de cobertura natural e IATF, controle de sêmen, prenhez, partos e desmame. Maximize a taxa de prenhez e reduza intervalo entre partos.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Controle Financeiro</h3>
+                <p>Registre todos os custos e receitas. Relatórios detalhados de rentabilidade por animal, lote e categoria. Veja onde está o lucro real.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Acesso Multi-Plataforma</h3>
+                <p>Use no celular, tablet ou computador. Acesse de qualquer lugar a qualquer hora. Dados sempre seguros e sincronizados na nuvem.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison">
+        <h2 class="section-title">Por Que AgroMM é Superior</h2>
+        <p class="section-subtitle">Compare e veja por que somos a escolha #1 dos pecuaristas brasileiros</p>
+        
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recurso</th>
+                        <th>Planilhas Excel</th>
+                        <th>Concorrentes</th>
+                        <th class="agromm-col">AgroMM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Interface Simples e Intuitiva</td>
+                        <td class="check-no">✗</td>
+                        <td>Complexo</td>
+                        <td class="check-yes">✓ Descomplicado</td>
+                    </tr>
+                    <tr>
+                        <td>Acesso Mobile</td>
+                        <td class="check-no">✗</td>
+                        <td class="check-yes">✓</td>
+                        <td class="check-yes">✓ Otimizado</td>
+                    </tr>
+                    <tr>
+                        <td>Controle Financeiro Completo</td>
+                        <td class="check-no">✗</td>
+                        <td>Básico</td>
+                        <td class="check-yes">✓ Avançado</td>
+                    </tr>
+                    <tr>
+                        <td>Controle de Sêmen e IATF</td>
+                        <td class="check-no">✗</td>
+                        <td class="check-no">✗</td>
+                        <td class="check-yes">✓ Completo</td>
+                    </tr>
+                    <tr>
+                        <td>Suporte em Português</td>
+                        <td class="check-no">✗</td>
+                        <td class="check-yes">✓</td>
+                        <td class="check-yes">✓ 24/7</td>
+                    </tr>
+                    <tr>
+                        <td>Plano Gratuito</td>
+                        <td class="check-yes">✓</td>
+                        <td class="check-no">✗</td>
+                        <td class="check-yes">✓ Até 50 animais</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <h2 class="section-title">Escolha o Plano Ideal Para Sua Fazenda</h2>
+        <p class="section-subtitle">Invista menos de R$ 10 por dia e transforme a gestão do seu rebanho</p>
+        
+        <!-- Pricing Toggle -->
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <div style="display: inline-flex; background: white; padding: 0.5rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); gap: 0.5rem;">
+                <button id="monthly-btn" class="pricing-toggle active" onclick="togglePricing('monthly')" style="padding: 0.8rem 2rem; border: none; border-radius: 40px; font-weight: 700; cursor: pointer; transition: all 0.3s; background: linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%); color: white;">
+                    Mensal
+                </button>
+                <button id="annual-btn" class="pricing-toggle" onclick="togglePricing('annual')" style="padding: 0.8rem 2rem; border: none; border-radius: 40px; font-weight: 700; cursor: pointer; transition: all 0.3s; background: transparent; color: #666;">
+                    Anual <span style="background: #4a7c2a; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; margin-left: 0.5rem; font-weight: 800;">ECONOMIZE 10%</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Básico</h3>
+                <div class="pricing-price">
+                    Grátis
+                </div>
+                <p style="color: #666; margin-bottom: 1rem; font-weight: 600;">Ideal para pequenos produtores iniciantes</p>
+                <ul class="pricing-features">
+                    <li>Até 50 animais</li>
+                    <li>1 usuário</li>
+                    <li>Cadastro completo do rebanho</li>
+                    <li>Controle de peso e GMD</li>
+                    <li>Gestão sanitária</li>
+                    <li>Controle reprodutivo</li>
+                    <li>Relatórios básicos</li>
+                    <li>Suporte por email</li>
+                </ul>
+                <a href="https://agromm.mbam.com.br/register" class="btn-pricing">Começar Grátis</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="pricing-price">
+                    <span class="price-monthly">R$ 49<small>,90/mês</small></span>
+                    <span class="price-annual" style="display: none;">R$ 44<small>,91/mês</small></span>
+                </div>
+                <p class="annual-savings" style="display: none; color: #4a7c2a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                    💰 Economize R$ 59,88/ano
+                </p>
+                <p style="color: #666; margin-bottom: 1rem; font-weight: 600;">Para produtores em crescimento</p>
+                <ul class="pricing-features">
+                    <li>Até 200 animais</li>
+                    <li>2 usuários</li>
+                    <li>Tudo do plano Básico</li>
+                    <li>Módulo Financeiro</li>
+                    <li>Relatórios avançados</li>
+                    <li>Controle de estoque</li>
+                    <li>Backup automático</li>
+                    <li>Suporte prioritário</li>
+                </ul>
+                <a href="https://agromm.mbam.com.br/register" class="btn-pricing">
+                    <span class="btn-text-monthly">Começar Agora</span>
+                    <span class="btn-text-annual" style="display: none;">Assinar Plano Anual</span>
+                </a>
+                <p class="annual-total" style="display: none; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    💳 Cobrado anualmente: R$ 538,92
+                </p>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-badge">🔥 MAIS ESCOLHIDO</div>
+                <h3>Profissional</h3>
+                <div class="pricing-price">
+                    <span class="price-monthly">R$ 149<small>,90/mês</small></span>
+                    <span class="price-annual" style="display: none;">R$ 134<small>,91/mês</small></span>
+                </div>
+                <p class="annual-savings" style="display: none; color: #5a9c3a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                    💰 Economize R$ 179,88/ano
+                </p>
+                <p style="opacity: 0.9; margin-bottom: 1rem; font-weight: 600;">Para produtores médios e profissionais</p>
+                <ul class="pricing-features">
+                    <li>Até 1.000 animais</li>
+                    <li>3 usuários</li>
+                    <li>Tudo do plano Starter</li>
+                    <li>Módulo Financeiro Avançado</li>
+                    <li>Controle de sêmen e IATF</li>
+                    <li>Análises e indicadores</li>
+                    <li>Múltiplos fazendas</li>
+                    <li>Suporte prioritário 24/7</li>
+                </ul>
+                <a href="https://agromm.mbam.com.br/register" class="btn-pricing">
+                    <span class="btn-text-monthly">Testar Grátis</span>
+                    <span class="btn-text-annual" style="display: none;">Assinar Plano Anual</span>
+                </a>
+                <p class="annual-total" style="display: none; margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                    💳 Cobrado anualmente: R$ 1.618,92
+                </p>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Fazenda</h3>
+                <div class="pricing-price">
+                    <span class="price-monthly">R$ 299<small>,90/mês</small></span>
+                    <span class="price-annual" style="display: none;">R$ 269<small>,91/mês</small></span>
+                </div>
+                <p class="annual-savings" style="display: none; color: #4a7c2a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                    💰 Economize R$ 359,88/ano
+                </p>
+                <p style="color: #666; margin-bottom: 1rem; font-weight: 600;">Para grandes fazendas e empresas</p>
+                <ul class="pricing-features">
+                    <li>Animais ilimitados</li>
+                    <li>Usuários ilimitados</li>
+                    <li>Tudo do plano Profissional</li>
+                    <li>Módulo Financeiro Completo</li>
+                    <li>Múltiplas fazendas</li>
+                    <li>Relatórios customizados</li>
+                    <li>Gerente de conta dedicado</li>
+                    <li>Treinamento da equipe</li>
+                </ul>
+                <a href="https://agromm.mbam.com.br/register" class="btn-pricing">
+                    <span class="btn-text-monthly">Falar com Vendas</span>
+                    <span class="btn-text-annual" style="display: none;">Assinar Plano Anual</span>
+                </a>
+                <p class="annual-total" style="display: none; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    💳 Cobrado anualmente: R$ 3.238,92
+                </p>
+            </div>
+        </div>
+
+        <div class="pricing-guarantee">
+            <h3>🛡️ Garantia de 30 Dias - Risco Zero</h3>
+            <p>
+                Teste o AgroMM por 30 dias sem compromisso. Se não ficar satisfeito, 
+                devolvemos 100% do seu investimento, sem perguntas. Simples assim!
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p class="section-subtitle">Tire todas as suas dúvidas antes de começar</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como funciona o plano gratuito? 
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    O plano gratuito é 100% funcional para fazendas com até 50 cabeças. Você tem acesso a todas as funcionalidades essenciais: cadastro de animais, controle de peso, gestão sanitária, reprodução e relatórios básicos. Sem limite de tempo, sem cartão de crédito. Quando seu rebanho crescer, você pode fazer upgrade facilmente.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Funciona no celular e tablet? 
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! O AgroMM é 100% responsivo e funciona perfeitamente em celulares, tablets e computadores. Você pode acessar de qualquer dispositivo com internet, a qualquer hora e lugar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    É difícil de usar? Preciso de treinamento? 
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    O AgroMM foi desenvolvido para ser extremamente intuitivo. Se você usa WhatsApp, vai conseguir usar o sistema sem dificuldades. A interface é simples e descomplicada, pensada especialmente para pecuaristas. Além disso, oferecemos documentação completa e suporte em português sempre que precisar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Meus dados estão seguros? 
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! Utilizamos criptografia de ponta a ponta e servidores em nuvem de última geração. Seus dados são replicados automaticamente em múltiplos servidores. Você também pode exportar todos os seus dados a qualquer momento. Fazemos backup diário automático de tudo.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Posso cancelar a qualquer momento? 
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! Não há contrato de fidelidade. Você pode cancelar a qualquer momento, sem burocracia. Seus dados permanecem acessíveis por 60 dias após o cancelamento para que você possa exportá-los se desejar.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como funciona o suporte? 
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Temos suporte em português via email e WhatsApp. Nossa equipe está pronta para ajudar você com qualquer dúvida ou problema. Respondemos rapidamente e entendemos das necessidades do dia a dia da pecuária.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <div class="cta-final-content">
+            <div class="urgency-badge">⚡ OFERTA LIMITADA: Apenas 47 vagas restantes!</div>
+            <h2>Comece Hoje e Transforme Sua Fazenda</h2>
+            <p>
+                Junte-se a mais de 500 pecuaristas que já aumentaram seus lucros 
+                e reduziram custos com gestão profissional
+            </p>
+            <a href="https://agromm.mbam.com.br/register" class="cta-primary">
+                GARANTIR MINHA VAGA GRÁTIS AGORA
+            </a>
+            <p class="hero-trust">
+                ✅ Sem cartão de crédito • ✅ Cancele quando quiser • ✅ Suporte em português
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">&copy; 2024 AgroMM - Sistema de Gestão Pecuária</p>
+        <p style="opacity: 0.7; margin-bottom: 1.5rem;">Desenvolvido por zootecnista para pecuaristas brasileiros</p>
+        
+        <div class="footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+            <a href="#">Contato</a>
+            <a href="#">FAQ</a>
+        </div>
+    </footer>
+
+    <script>
+        // Pricing Toggle Function
+        function togglePricing(period) {
+            const monthlyBtn = document.getElementById('monthly-btn');
+            const annualBtn = document.getElementById('annual-btn');
+            
+            const monthlyPrices = document.querySelectorAll('.price-monthly');
+            const annualPrices = document.querySelectorAll('.price-annual');
+            const annualSavings = document.querySelectorAll('.annual-savings');
+            const annualTotals = document.querySelectorAll('.annual-total');
+            const monthlyBtnTexts = document.querySelectorAll('.btn-text-monthly');
+            const annualBtnTexts = document.querySelectorAll('.btn-text-annual');
+            
+            if (period === 'monthly') {
+                // Style buttons
+                monthlyBtn.style.background = 'linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%)';
+                monthlyBtn.style.color = 'white';
+                annualBtn.style.background = 'transparent';
+                annualBtn.style.color = '#666';
+                
+                // Show/hide prices
+                monthlyPrices.forEach(el => el.style.display = 'inline');
+                annualPrices.forEach(el => el.style.display = 'none');
+                annualSavings.forEach(el => el.style.display = 'none');
+                annualTotals.forEach(el => el.style.display = 'none');
+                monthlyBtnTexts.forEach(el => el.style.display = 'inline');
+                annualBtnTexts.forEach(el => el.style.display = 'none');
+            } else {
+                // Style buttons
+                monthlyBtn.style.background = 'transparent';
+                monthlyBtn.style.color = '#666';
+                annualBtn.style.background = 'linear-gradient(135deg, #4a7c2a 0%, #5a9c3a 100%)';
+                annualBtn.style.color = 'white';
+                
+                // Show/hide prices
+                monthlyPrices.forEach(el => el.style.display = 'none');
+                annualPrices.forEach(el => el.style.display = 'inline');
+                annualSavings.forEach(el => el.style.display = 'block');
+                annualTotals.forEach(el => el.style.display = 'block');
+                monthlyBtnTexts.forEach(el => el.style.display = 'none');
+                annualBtnTexts.forEach(el => el.style.display = 'inline');
+            }
+        }
+
+        // Counter Animation
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString('pt-BR');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString('pt-BR');
+                }
+            }, 16);
+        }
+
+        // Animate counters when visible
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    if (target) {
+                        animateCounter(entry.target, target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('[data-target]').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .pricing-card, .pain-item, .solution-item, .screenshot-item, .testimonial-card, .result-card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

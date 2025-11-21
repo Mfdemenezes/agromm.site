@@ -1,0 +1,94 @@
+# 📦 LANDING PAGE AGROMM - GUIA DE INSTALAÇÃO
+
+## ✅ ARQUIVOS NECESSÁRIOS
+
+Coloque TODOS estes arquivos na **MESMA PASTA**:
+
+### 1. Arquivo HTML:
+- **index.html** (este é o arquivo principal da landing page)
+
+### 2. Imagens (8 arquivos):
+
+#### Logo:
+- **Logo_AgroMM_-_Versa_o_Pecua_ria__1_.png**
+
+#### Hero (fundo):
+- **Cabec_alho_Fazenda_1920x400_Final__2_.jpg**
+
+#### Screenshots:
+- **Captura_de_Tela_2025-11-18_a_s_07_40_08.png** (dashboard desktop)
+- **AgroMM_Imagem_3_Frontend_Real__1_.png** (mobile 1)
+- **AgroMM_Pecua_ria_Imagem_3.png** (mobile 2)
+
+#### Ícones:
+- **I_cone_-_Lote_Total.png** (ícone de rebanho)
+- **I_cone_-_Touro.png** (ícone de touro)
+- **I_cone_-_Vaca.png** (ícone de vaca)
+
+---
+
+## 📂 ESTRUTURA CORRETA:
+
+```
+sua-pasta/
+├── index.html
+├── Logo_AgroMM_-_Versa_o_Pecua_ria__1_.png
+├── Cabec_alho_Fazenda_1920x400_Final__2_.jpg
+├── Captura_de_Tela_2025-11-18_a_s_07_40_08.png
+├── AgroMM_Imagem_3_Frontend_Real__1_.png
+├── AgroMM_Pecua_ria_Imagem_3.png
+├── I_cone_-_Lote_Total.png
+├── I_cone_-_Touro.png
+└── I_cone_-_Vaca.png
+```
+
+**TOTAL: 9 arquivos (1 HTML + 8 imagens)**
+
+---
+
+## 🚀 COMO USAR:
+
+### Opção 1 - Testar Localmente:
+1. Coloque todos os 9 arquivos na mesma pasta
+2. Clique duas vezes no arquivo **index.html**
+3. Abrirá no navegador
+
+### Opção 2 - Colocar Online:
+1. Faça upload de TODOS os 9 arquivos para seu servidor
+2. Mantenha todos na mesma pasta/diretório
+3. Acesse pelo navegador: `seu-dominio.com/index.html`
+
+---
+
+## ⚠️ IMPORTANTE:
+
+- ✅ **NÃO RENOMEIE** nenhum arquivo
+- ✅ **TODOS** devem estar na **MESMA PASTA**
+- ✅ Mantenha os nomes **EXATAMENTE** como estão (com underscores, acentos, etc)
+- ✅ Se alguma imagem não aparecer, verifique se o nome está EXATO
+
+---
+
+## 🎯 FUNCIONALIDADES DA LANDING PAGE:
+
+✅ Toggle Mensal/Anual (10% desconto)
+✅ Contador animado (560 fazendas + 82.300 cabeças)
+✅ 4 planos de preços
+✅ Screenshots do sistema
+✅ Depoimentos
+✅ FAQ interativo
+✅ 100% responsivo (mobile/tablet/desktop)
+✅ Animações suaves ao scroll
+
+---
+
+## 📞 PRECISA DE AJUDA?
+
+Se alguma imagem não aparecer:
+1. Verifique se TODOS os 9 arquivos estão na mesma pasta
+2. Confira se os nomes estão EXATOS (case-sensitive)
+3. Limpe o cache do navegador (Ctrl+F5)
+
+---
+
+**Desenvolvido para AgroMM - Sistema de Gestão Pecuária** 🐄💚
